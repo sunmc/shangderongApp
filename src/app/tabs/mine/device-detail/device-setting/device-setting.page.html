@@ -1,0 +1,58 @@
+<!-- <ion-header color="primary">
+  <ion-toolbar style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);">
+    <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/device-detail" routerLinkActive="true"></ion-icon>
+    <ion-title>设置</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content color="light">
+    <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+        <ion-row style="margin-top: 10px">
+          <ion-col size="2" style="text-align: left" >
+              <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+          </ion-col>
+          <ion-col size="8" style="text-align: center;">
+            <span style="font-size: 18px">
+                设置
+            </span>
+          </ion-col>
+          <ion-col size="2" style="text-align: center;">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    <ion-list style="background: #F8FAFF">
+        <ion-item detail="true" (click)="updateName()">
+          <ion-label>设备名称</ion-label>
+          <ion-note slot="end">{{device.deviceName}}</ion-note>
+        </ion-item>
+        <ion-item detail="true" (click)="toAddressSetting()">
+          <ion-label>设备地址</ion-label>
+          <ion-note slot="end" style="max-width: 180px">{{device.community}}</ion-note>
+        </ion-item>
+        <ion-item >
+          <ion-label>设备ID</ion-label>
+          <ion-note slot="end">{{device.deviceId}}</ion-note>
+        </ion-item>
+        <ion-item>
+            <ion-label>硬件版本号</ion-label>
+            <ion-note slot="end">{{device.version}}</ion-note>
+          </ion-item>
+        <ion-item detail="true" lines="none">
+          <ion-label>固件升级</ion-label>
+        </ion-item>
+        <ion-item detail="true"  style="margin-top: 20px;">
+          <ion-label>说明书</ion-label>
+        </ion-item>
+        <ion-item detail="true" lines="none">
+          <ion-label>常见问题</ion-label>
+        </ion-item>
+        <ion-item detail="true" lines="none" style="margin-top: 20px;">
+          <ion-label>更换WiFi</ion-label>
+          <ion-note slot="end">更换设备WiFi</ion-note>
+        </ion-item>
+      
+    </ion-list>
+    <ion-button expand="block" (click)="deleteDevice()">删除设备</ion-button>
+
+
+</ion-content>

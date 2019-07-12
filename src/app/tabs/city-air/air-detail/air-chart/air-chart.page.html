@@ -1,0 +1,169 @@
+<ion-content>
+  <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+    <ion-row style="margin-top: 10px">
+      <ion-col size="2" style="text-align: left" >
+          <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+      </ion-col>
+      <ion-col size="8" style="text-align: center;">
+        <span style="font-size: 18px">
+            空气质量指数
+        </span>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid style="margin-top: 10px">
+      <ion-row>
+          <ion-col align-self-left>
+            <p style="font-weight: bold; font-size: 16px; color: #333333">
+              <b style="font-size: 20px">I</b>
+                {{title}}
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+              <ion-segment color="primary" (ionChange)="segmentChanged($event.detail.value)">
+                  <ion-segment-button value="day" checked>
+                    <ion-label>24小时</ion-label>
+                  </ion-segment-button>
+                  <ion-segment-button value="day2" checked>
+                      <ion-label>48小时</ion-label>
+                    </ion-segment-button>
+                  <ion-segment-button value="day7">
+                    <ion-label>7天</ion-label>
+                  </ion-segment-button>
+                  <ion-segment-button value="day30">
+                      <ion-label>30天</ion-label>
+                    </ion-segment-button>
+                </ion-segment>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12">
+            <div id="container"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="2" align-self-center style="text-align: left">
+            <p><i style="color:#3165EC" class="fa fa-circle"></i> 优</p>
+          </ion-col>
+          <ion-col size="2" align-self-center style="text-align: left">
+            <p><i style="color:#4CDB3F" class="fa fa-circle"></i> 良</p>
+          </ion-col>
+          <ion-col size="4" align-self-center style="text-align: left">
+            <p><i style="color:#FACE3C" class="fa fa-circle"></i> 轻度污染</p>
+          </ion-col>
+          <ion-col size="4" align-self-center style="text-align: left">
+            <p><i style="color:#FA7449" class="fa fa-circle"></i> 中度污染</p>
+          </ion-col>
+          <ion-col size="4" align-self-center style="text-align: left">
+            <p><i style="color:#A930B5" class="fa fa-circle"></i> 重度污染</p>
+          </ion-col>
+          <ion-col size="4" align-self-center style="text-align: left">
+            <p><i style="color:#FF2149" class="fa fa-circle"></i> 严重污染</p>
+          </ion-col>
+          <ion-col size="4" align-self-center style="text-align: left">
+            <p><i style="color:#7E0021" class="fa fa-circle"></i> 爆表</p>
+          </ion-col>
+        </ion-row>
+        <ion-row style="margin-top: 10px">
+          <ion-col align-self-left>
+            <p style="font-weight: bold; font-size: 16px; color: #333333">
+              <b style="font-size: 20px">I</b>
+                值级对照表
+            </p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p style="font-weight: bold; color: #333333; ">值范围</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p style="font-weight: bold; color: #333333; ">等级</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p style="font-weight: bold; color: #333333; ">色值</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p>0-50</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p>优</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div style="width:65px; height:16px;background:#3165EC; border-radius:2px;"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p>50-100</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p>良</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div style="width:65px; height:16px;background:#4CDB3F; border-radius:2px;"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p>100-150</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p>轻度污染</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div style="width:65px; height:16px;background:#FACE3C; border-radius:2px;"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p>150-200</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p>中度污染</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div style="width:65px; height:16px;background:#FA7449; border-radius:2px;"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p>200-250</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p>重度污染</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div style="width:65px; height:16px;background:#A930B5; border-radius:2px;"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p>250-300</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p>严重污染</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div style="width:65px; height:16px;background:#FF2149; border-radius:2px;"></div>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="4" style="text-align: center">
+            <p>300+</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <p>爆表</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div style="width:65px; height:16px;background:#7E0021; border-radius:2px;"></div>
+          </ion-col>
+        </ion-row>
+  </ion-grid>
+
+</ion-content>

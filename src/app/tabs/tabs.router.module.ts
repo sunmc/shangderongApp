@@ -8,42 +8,51 @@ const routes: Routes = [
     component: TabsPage,
     children: [
       {
-        path: 'tab1',
+        path: 'city-air',
         children: [
           {
             path: '',
-            loadChildren: '../tab1/tab1.module#Tab1PageModule'
+            loadChildren: '../tabs/city-air/city-air.module#CityAirPageModule'
           }
         ]
       },
       {
-        path: 'tab2',
+        path: 'device-map',
         children: [
           {
             path: '',
-            loadChildren: '../tab2/tab2.module#Tab2PageModule'
+            loadChildren: '../tabs/device-map/device-map.module#DeviceMapPageModule'
           }
         ]
       },
       {
-        path: 'tab3',
+        path: 'mine',
         children: [
           {
             path: '',
-            loadChildren: '../tab3/tab3.module#Tab3PageModule'
+            loadChildren: '../tabs/mine/mine.module#MinePageModule'
+          }
+        ]
+      },
+      {
+        path: 'more',
+        children: [
+          {
+            path: '',
+            loadChildren: '../tabs/more/more.module#MorePageModule'
           }
         ]
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/login',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/login',
     pathMatch: 'full'
   }
 ];

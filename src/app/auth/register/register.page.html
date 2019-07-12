@@ -1,0 +1,97 @@
+<ion-header padding="45px">
+  <ion-toolbar>
+    <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/login" routerLinkActive="true"></ion-icon>
+    <ion-title>
+      注册
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+  <ion-item>
+    <ion-label>
+      用户昵称
+    </ion-label>
+    <ion-input type="text" placeholder="请输入昵称" [(ngModel)]="user.nickname" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      登录账号
+    </ion-label>
+    <ion-input type="text" placeholder="请输入手机号" [(ngModel)]="user.contactPhone" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      验证码&emsp;
+    </ion-label>
+    <ion-input type="text" placeholder="请输入验证码" [(ngModel)]="user.code" required="true"></ion-input>
+    <a (click)="sendSmsCode()" *ngIf="smsCodeDes == '获取验证码'">{{smsCodeDes}}</a>
+    <ion-label *ngIf="smsCodeDes != '获取验证码'">{{smsCodeDes}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      设置密码
+    </ion-label>
+    <ion-input type="password" placeholder="请设置密码" [(ngModel)]="user.passwd" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      确认密码
+    </ion-label>
+    <ion-input type="password" placeholder="请再次输入密码" [(ngModel)]="password" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <label>地区</label>
+    <ion-select *ngIf="areaOptions != null" okText="确定" cancelText="取消" placeholder="省"  (ionChange)="areaFilter(1)" [(ngModel)]="province">
+      <ion-select-option *ngFor="let p of areaOptions[0].options" [value]="p">{{p.text}}</ion-select-option>
+    </ion-select>
+    <ion-select okText="确定" cancelText="取消" placeholder="市" (ionChange)="areaFilter(2)" [(ngModel)]="city">
+      <ion-select-option *ngFor="let p of citys" [value]="p">{{p.text}}</ion-select-option>
+    </ion-select>
+    <ion-select okText="确定" cancelText="取消" placeholder="区" [(ngModel)]="area">
+      <ion-select-option *ngFor="let p of areas" [value]="p">{{p.text}}</ion-select-option>
+    </ion-select>
+  </ion-item>
+  <ion-item>
+    <ion-label>小区名称</ion-label>
+    <ion-input type="text" placeholder="小区名称" [(ngModel)]="user.community" (ionFocus)="setAutoSet()" (ionChange)="searchCommunity()" required="true"></ion-input>
+    <ion-button *ngIf="ifShowResult" (click)="closeResult()" color="light">收起</ion-button>
+  </ion-item>
+  <ion-item style="background:lightgray" *ngIf="ifShowResult">
+    <ion-list  style="background:lightgray; padding: 5px">
+      <ion-radio-group [(ngModel)]="community" (ionChange)="checkCommunity()">
+        <ion-item *ngFor="let c of communityLocs">
+          <ion-label>{{c.name}}</ion-label>
+          <ion-radio slot="start" [value]="c"></ion-radio>
+        </ion-item>    
+      </ion-radio-group>
+    </ion-list>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      紧急联系人1
+    </ion-label>
+    <ion-input type="text" placeholder="请输入紧急联系人1" [(ngModel)]="user.sosName1" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      紧急联系人电话
+    </ion-label>
+    <ion-input type="text" placeholder="请输入紧急联系人电话" [(ngModel)]="user.sosPhone1" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      紧急联系人2
+    </ion-label>
+    <ion-input type="text" placeholder="请输入紧急联系人2" [(ngModel)]="user.sosName2" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-label>
+      紧急联系人电话
+    </ion-label>
+    <ion-input type="text" placeholder="请输入紧急联系人电话" [(ngModel)]="user.sosPhone2" required="true"></ion-input>
+  </ion-item>
+  <ion-checkbox [(ngModel)]="apply"></ion-checkbox>
+  <a routerLink="/protocol" routerLinkActive="true">隐私协议</a>
+  <ion-button expand="block" (click)="register()" *ngIf="apply">注册</ion-button>
+</ion-content>

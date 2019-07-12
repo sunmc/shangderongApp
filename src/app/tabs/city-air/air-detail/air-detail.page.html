@@ -1,0 +1,238 @@
+<ion-content style="background: #F8FAFF">
+  <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+    <ion-row style="margin-top: 10px">
+      <ion-col size="4">
+        <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+      </ion-col>
+      <ion-col size="4" style="text-align: center">
+          <div class="circle-box">
+              <div class="circle-left"></div>
+              <p style="font-size: 40px; margin: 0; padding-top: 10px">{{aqi.value}}</p>
+              <p style="font-size: 12px; margin: 0;">国标AQI:良</p>
+              <p style="font-size: 18px; margin: 0;">{{aqi.cityName}}</p>
+          </div>
+      </ion-col>
+      <ion-col size="4">
+
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4" style="text-align:  center">
+        <ion-icon name="water"></ion-icon>
+        <span style="font-size: 14px; margin: 0"> {{forecast.humidity}}%</span>
+      </ion-col>
+      <ion-col size="4" style="text-align:  center">
+          <ion-icon name="sunny"></ion-icon>
+          <span style="font-size: 14px; margin: 0"> {{forecast.tempDay}}</span>
+      </ion-col>
+      <ion-col size="4" style="text-align:  center">
+          <ion-icon name="ios-nuclear"></ion-icon>
+          <span style="font-size: 14px; margin: 0"> {{forecast.windDirDay}}{{forecast.windLevelDay}}级</span>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-left>
+          <p style="font-weight: bold; font-size: 16px; color: #333333">
+            <b style="font-size: 20px">I</b>
+            最近24小时指标统计
+          </p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+      <ion-item detail="true" (click)="toAirChart('国标AQI', 'aqi')">
+        <img *ngIf="aqi.value &lt; 51" src="../../../../assets/icon/city-air/tag.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.value > 50 && aqi.value &lt; 101" src="../../../../assets/icon/city-air/tag-liang.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.value > 100 && aqi.value &lt; 151" src="../../../../assets/icon/city-air/tag-轻度污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.value > 150 && aqi.value &lt; 201" src="../../../../assets/icon/city-air/tag=中污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.value > 200 && aqi.value &lt; 251" src="../../../../assets/icon/city-air/tag-重污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.value > 250 && aqi.value &lt; 301" src="../../../../assets/icon/city-air/tag-严重.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.value > 300" src="../../../../assets/icon/city-air/tag-爆表.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <div style="margin-left: 20px; margin-bottom: 5px;  margin-top: 5px; width: 50px">
+              <p style="font-size: 19px; color: #333333; margin: 0">{{aqi.value}}</p>
+              <p style="font-size: 14px; color: #626B80; margin: 0">AQI</p>
+          </div>
+          <div style="margin-left: 10px; width: 150px; height: 60px" id="aqi_container">
+          </div>
+      </ion-item>
+      <ion-item detail="true" (click)="toAirChart('PM 25', 'pm25')">
+        <img *ngIf="aqi.pm25 &lt; 51" src="../../../../assets/icon/city-air/tag.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm25 > 50 && aqi.pm25 &lt; 101" src="../../../../assets/icon/city-air/tag-liang.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm25 > 100 && aqi.pm25 &lt; 151" src="../../../../assets/icon/city-air/tag-轻度污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm25 > 150 && aqi.pm25 &lt; 201" src="../../../../assets/icon/city-air/tag=中污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm25 > 200 && aqi.pm25 &lt; 251" src="../../../../assets/icon/city-air/tag-重污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm25 > 250 && aqi.pm25 &lt; 301" src="../../../../assets/icon/city-air/tag-严重.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm25 > 300" src="../../../../assets/icon/city-air/tag-爆表.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <div style="margin-left: 20px; margin-bottom: 5px;  margin-top: 5px; width: 50px">
+            <p style="font-size: 19px; color: #333333; margin: 0">{{aqi.pm25}}</p>
+            <p style="font-size: 14px; color: #626B80; margin: 0">PM 2.5</p>
+        </div>
+        <div style="margin-left: 10px; width: 150px; height: 60px" id="pm25_container">
+        </div>
+      </ion-item>
+      <ion-item detail="true" (click)="toAirChart('PM 10', 'pm10')">
+        <img *ngIf="aqi.pm10 &lt; 51" src="../../../../assets/icon/city-air/tag.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm10 > 50 && aqi.pm10 &lt; 101" src="../../../../assets/icon/city-air/tag-liang.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm10 > 100 && aqi.pm10 &lt; 151" src="../../../../assets/icon/city-air/tag-轻度污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm10 > 150 && aqi.pm10 &lt; 201" src="../../../../assets/icon/city-air/tag=中污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm10 > 200 && aqi.pm10 &lt; 251" src="../../../../assets/icon/city-air/tag-重污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm10 > 250 && aqi.pm10 &lt; 301" src="../../../../assets/icon/city-air/tag-严重.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.pm10 > 300" src="../../../../assets/icon/city-air/tag-爆表.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <div style="margin-left: 20px; margin-bottom: 5px;  margin-top: 5px; width: 50px">
+            <p style="font-size: 19px; color: #333333; margin: 0">{{aqi.pm10}}</p>
+            <p style="font-size: 14px; color: #626B80; margin: 0">PM 10</p>
+        </div>
+        <div style="margin-left: 10px; width: 150px; height: 60px" id="pm10_container">
+        </div>
+      </ion-item>
+      <ion-item detail="true" (click)="toAirChart('SO2', 'so2')">
+        <img *ngIf="aqi.so2 &lt; 51" src="../../../../assets/icon/city-air/tag.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.so2 > 50 && aqi.so2 &lt; 101" src="../../../../assets/icon/city-air/tag-liang.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.so2 > 100 && aqi.so2 &lt; 151" src="../../../../assets/icon/city-air/tag-轻度污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.so2 > 150 && aqi.so2 &lt; 201" src="../../../../assets/icon/city-air/tag=中污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.so2 > 200 && aqi.so2 &lt; 251" src="../../../../assets/icon/city-air/tag-重污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.so2 > 250 && aqi.so2 &lt; 301" src="../../../../assets/icon/city-air/tag-严重.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.so2 > 300" src="../../../../assets/icon/city-air/tag-爆表.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <div style="margin-left: 20px; margin-bottom: 5px;  margin-top: 5px; width: 50px">
+            <p style="font-size: 19px; color: #333333; margin: 0">{{aqi.so2}}</p>
+            <p style="font-size: 14px; color: #626B80; margin: 0">SO<span style="font-size: 8px">2</span></p>
+        </div>
+        <div style="margin-left: 10px; width: 150px; height: 60px" id="so2_container"> 
+        </div>
+      </ion-item>
+      <ion-item detail="true" (click)="toAirChart('NO2', 'no2')">
+        <img *ngIf="aqi.no2 &lt; 51" src="../../../../assets/icon/city-air/tag.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.no2 > 50 && aqi.no2 &lt; 101" src="../../../../assets/icon/city-air/tag-liang.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.no2 > 100 && aqi.no2 &lt; 151" src="../../../../assets/icon/city-air/tag-轻度污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.no2 > 150 && aqi.no2 &lt; 201" src="../../../../assets/icon/city-air/tag=中污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.no2 > 200 && aqi.no2 &lt; 251" src="../../../../assets/icon/city-air/tag-重污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.no2 > 250 && aqi.no2 &lt; 301" src="../../../../assets/icon/city-air/tag-严重.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.no2 > 300" src="../../../../assets/icon/city-air/tag-爆表.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <div style="margin-left: 20px; margin-bottom: 5px;  margin-top: 5px; width: 50px">
+              <p style="font-size: 19px; color: #333333; margin: 0">{{aqi.no2}}</p>
+              <p style="font-size: 14px; color: #626B80; margin: 0">NO<span style="font-size: 8px">2</span></p>
+          </div>
+          <div style="margin-left: 10px; width: 150px; height: 60px" id="no2_container">
+          </div>
+      </ion-item>
+      <ion-item detail="true" (click)="toAirChart('CO', 'co')">
+        <img *ngIf="aqi.co &lt; 51" src="../../../../assets/icon/city-air/tag.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.co > 50 && aqi.co &lt; 101" src="../../../../assets/icon/city-air/tag-liang.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.co > 100 && aqi.co &lt; 151" src="../../../../assets/icon/city-air/tag-轻度污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.co > 150 && aqi.co &lt; 201" src="../../../../assets/icon/city-air/tag=中污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.co > 200 && aqi.co &lt; 251" src="../../../../assets/icon/city-air/tag-重污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.co > 250 && aqi.co &lt; 301" src="../../../../assets/icon/city-air/tag-严重.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.co > 300" src="../../../../assets/icon/city-air/tag-爆表.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <div style="margin-left: 20px; margin-bottom: 5px;  margin-top: 5px; width: 50px">
+              <p style="font-size: 19px; color: #333333; margin: 0">{{aqi.co}}</p>
+              <p style="font-size: 14px; color: #626B80; margin: 0">CO</p>
+          </div>
+          <div style="margin-left: 10px; width: 150px; height: 60px" id="co_container">
+          </div>
+      </ion-item>
+      <ion-item detail="true" (click)="toAirChart('O3', 'o3')">
+        <img *ngIf="aqi.o3 &lt; 51" src="../../../../assets/icon/city-air/tag.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.o3 > 50 && aqi.o3 &lt; 101" src="../../../../assets/icon/city-air/tag-liang.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.o3 > 100 && aqi.o3 &lt; 151" src="../../../../assets/icon/city-air/tag-轻度污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.o3 > 150 && aqi.o3 &lt; 201" src="../../../../assets/icon/city-air/tag=中污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.o3 > 200 && aqi.o3 &lt; 251" src="../../../../assets/icon/city-air/tag-重污染.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.o3 > 250 && aqi.o3 &lt; 301" src="../../../../assets/icon/city-air/tag-严重.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <img *ngIf="aqi.o3 > 300" src="../../../../assets/icon/city-air/tag-爆表.png" style="height: 50px; width: 50px; margin-bottom: 5px;  margin-top: 5px">
+        <div style="margin-left: 20px; margin-bottom: 5px;  margin-top: 5px; width: 50px">
+              <p style="font-size: 19px; color: #333333; margin: 0">{{aqi.o3}}</p>
+              <p style="font-size: 14px; color: #626B80; margin: 0">O<span style="font-size: 8px">3</span></p>
+          </div>
+          <div style="margin-left: 10px; width: 150px; height: 60px" id="o3_container">
+          </div>
+      </ion-item>
+  </ion-list>
+  <ion-grid style="margin-top: 10px">
+    <ion-row>
+      <ion-col align-self-left>
+          <p style="font-weight: bold; font-size: 16px; color: #333333">
+            <b style="font-size: 20px">I</b>
+            天气预报
+          </p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #333333; font-size: 12px; font-weight: 500">今天</p>
+        <p *ngIf="this.days.length > 0" style="color: #626B80; font-size: 12px; font-weight: 300">{{this.days[0]}}</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #333333; font-size: 12px; font-weight: 500">明天</p>
+        <p *ngIf="this.days.length > 0" style="color: #626B80; font-size: 12px; font-weight: 300">{{this.days[1]}}</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #333333; font-size: 12px; font-weight: 500">{{three}}</p>
+        <p *ngIf="this.days.length > 0" style="color: #626B80; font-size: 12px; font-weight: 300">{{this.days[2]}}</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #333333; font-size: 12px; font-weight: 500">{{four}}</p>
+        <p *ngIf="this.days.length > 0" style="color: #626B80; font-size: 12px; font-weight: 300">{{this.days[3]}}</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #333333; font-size: 12px; font-weight: 500">{{five}}</p>
+        <p *ngIf="this.days.length > 0" style="color: #626B80; font-size: 12px; font-weight: 300">{{this.days[4]}}</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #333333; font-size: 12px; font-weight: 500">{{six}}</p>
+        <p *ngIf="this.days.length > 0" style="color: #626B80; font-size: 12px; font-weight: 300">{{this.days[5]}}</p>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="2" style="text-align:center">
+        <img src="../../../../assets/icon/city-air/天气-{{this.forecasts[0].conditionDay}}">
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <img src="../../../../assets/icon/city-air/天气-{{this.forecasts[1].conditionDay}}">
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <img src="../../../../assets/icon/city-air/天气-{{this.forecasts[2].conditionDay}}">
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <img src="../../../../assets/icon/city-air/天气-{{this.forecasts[3].conditionDay}}">
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <img src="../../../../assets/icon/city-air/天气-{{this.forecasts[4].conditionDay}}">
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <img src="../../../../assets/icon/city-air/天气-{{this.forecasts[5].conditionDay}}">
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <div id="weather_container" style="margin-left: 12px; margin-right: 12px; height: 150px"></div>
+      </ion-col>
+    </ion-row>
+    <ion-row *ngIf="forecasts.length > 0">
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[0].windDirDay}}</p>
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[0].windLevelDay}}级</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[1].windDirDay}}</p>
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[1].windLevelDay}}级</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[2].windDirDay}}</p>
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[2].windLevelDay}}级</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[3].windDirDay}}</p>
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[3].windLevelDay}}级</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[4].windDirDay}}</p>
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[4].windLevelDay}}级</p>
+      </ion-col>
+      <ion-col size="2" style="text-align:center">
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[5].windDirDay}}</p>
+        <p style="color: #626B80; font-size: 12px; font-weight: 300">{{this.forecasts[5].windLevelDay}}级</p>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

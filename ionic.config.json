@@ -1,6 +1,8 @@
 {
   "name": "shangderongApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular",
   "id": "b76570a3"
 }

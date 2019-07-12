@@ -1,0 +1,125 @@
+<!-- <ion-header>
+    <ion-toolbar>
+      <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/after-service" routerLinkActive="true"></ion-icon>
+      <ion-title>售后维护详情</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+
+<ion-content color="light">
+    <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+      <ion-row style="margin-top: 10px">
+        <ion-col size="2" style="text-align: left" >
+            <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+        </ion-col>
+        <ion-col size="8" style="text-align: center;">
+          <span style="font-size: 18px">
+              售后维护详情
+          </span>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <ion-grid style="background: white">
+    <ion-row>
+      <ion-col size="12">
+        <h5>
+          <b style="font-size: 20px">I</b>
+          设备信息
+        </h5>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-label>选择设备：</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>{{afData.deviceName}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-label>设备ID:</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>{{afData.deviceId}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-label>地址：</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>{{afData.address}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-label>服务时间：</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>{{afData.serviceTime}}</ion-label>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size="4">
+        <ion-label>备注：</ion-label>
+      </ion-col>
+      <ion-col size="8">
+        <ion-label>{{afData.memo}}</ion-label>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid style="background: white; margin-top:20px">
+      <ion-row>
+        <ion-col size="12">
+          <h5>
+            <b style="font-size: 20px">I</b>
+            维护信息
+          </h5>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>工作人员：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.worker}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>电话：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.phone}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>服务时间：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.serviceTime}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>维护状态：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.whState}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>设备状态</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.deviceState}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+</ion-content>

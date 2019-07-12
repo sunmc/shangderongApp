@@ -1,0 +1,61 @@
+<!-- <ion-header>
+    <ion-toolbar>
+      <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/device-detail" routerLinkActive="true"></ion-icon>
+      <ion-title>报警记录</ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  
+  <ion-content>
+      <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+          <ion-row style="margin-top: 10px">
+            <ion-col size="2" style="text-align: left" >
+                <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+            </ion-col>
+            <ion-col size="8" style="text-align: center;">
+              <span style="font-size: 18px">
+                  报警记录
+              </span>
+            </ion-col>
+            <ion-col size="2" style="text-align: center;">
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <p style="font-size: 14px; color: #333333; font-weight: bold">开始时间</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 14px; color: #333333; font-weight: bold">结束时间</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 14px; color: #333333; font-weight: bold">数值</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 14px; color: #333333; font-weight: bold">状态</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 14px; color: #333333; font-weight: bold">通信</p>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngFor="let d of sosRecords">
+        <ion-col>
+          <p style="font-size: 14px; color: #626B80; font-weight: 300">{{d.sosStartTime}}</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 14px; color: #626B80; font-weight: 300">{{d.sosEndTime}}</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 14px; color: #626B80; font-weight: 300">{{d.gasValue}}</p>
+        </ion-col>
+        <ion-col>
+          <p *ngIf="d.faultType != '警报'" style="font-size: 14px; color: #626B80; font-weight: 300">{{d.faultType}}</p>
+          <p *ngIf="d.faultType == '警报'" style="font-size: 14px; color: #FB4566; font-weight: 300">{{d.faultType}}</p>
+        </ion-col>
+        <ion-col>
+          <p style="font-size: 14px; color: #626B80; font-weight: 300">{{d.smsSendStatus}}</p>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  

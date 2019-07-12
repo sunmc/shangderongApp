@@ -1,0 +1,70 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/tabs/more" routerLinkActive="true"></ion-icon>
+    <ion-title>售后维护</ion-title>
+    <ion-label style="color: #3165EC" slot="end" routerLink="/after-service-apply" routerLinkActive="true">维护申请</ion-label>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+      <ion-row style="margin-top: 10px">
+        <ion-col size="2" style="text-align: left" >
+            <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+        </ion-col>
+        <ion-col size="8" style="text-align: center;">
+          <span style="font-size: 18px">
+              售后维护
+          </span>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+            <ion-label style="color: #3165EC" slot="end" (click)="toAfterServiceApply()">维护申请</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <ion-card routerLink="/after-service-detail" routerLinkActive="true" *ngFor="let afData of afDataList">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="8" align-self-left>
+          <h5 style="margin: 0">{{afData.deviceName}} ID:{{afData.deviceId}}</h5>
+        </ion-col>
+        <ion-col size="4" align-self-left style="text-align: right">
+          <ion-label style="color: #FB4566">{{afData.whState}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>服务时间：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.serviceTime}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>设备状态：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.deviceState}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>工作人员：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.worker}}</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-label>电话：</ion-label>
+        </ion-col>
+        <ion-col size="8">
+          <ion-label>{{afData.phone}}</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

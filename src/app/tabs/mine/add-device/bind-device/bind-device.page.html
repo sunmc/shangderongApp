@@ -1,0 +1,84 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/add-device" routerLinkActive="true"></ion-icon>
+    <ion-title>绑定设备</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+      <ion-row style="margin-top: 10px">
+        <ion-col size="2" style="text-align: left" >
+            <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+        </ion-col>
+        <ion-col size="8" style="text-align: center;">
+          <span style="font-size: 18px">
+              绑定设备
+          </span>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <div id="scanId" class="padd20" *ngIf="bindState == '1'">
+    <img src="../../../assets/img/bind-device0.jpg" height="150" width="600"/>
+    <p>
+      1.点击【扫一扫】扫描设备背部或包装箱上的【设备ID】
+    </p>
+    <p>
+      2.点击【绑定设备】，成功后点击【下一步】
+    </p>
+    <p style="margin-top: 30px">
+      手机绑定设备
+    </p>
+    <ion-item-divider lines="none" >
+      <ion-button size="default" (click)="scan()">扫一扫</ion-button>
+      <ion-input placeholder="输入设备ID" style="background-color: #ffffff" [(ngModel)]="deviceId"></ion-input>
+    </ion-item-divider>
+    <ion-button expand="block" (click)="getType()">绑定设备</ion-button>
+    <ion-button expand="block" *ngIf="deviceType != null" (click)="showInstruction()">下一步</ion-button>
+  </div>
+  <div id="instruction" class="padd20"  *ngIf="bindState == '2'" >
+    <img src="../../../assets/img/bind-device1.jpg" height="150" width="600"/>
+    <p>
+      1.如上图所示，翻转至设备背面，取出电源线
+    </p>
+    <p>
+      2.将报警器固定后，插入电源，如果正常会发光；
+    </p>
+    <p>
+      3.开机30S内未连接WiFi，配网指示灯闪烁。
+    </p>
+    <img src="../../../assets/img/bind-device2.jpg" height="150" width="600"/>
+    <p>
+      1.如果环形灯快闪，则说明设备进入配网状态
+    </p>
+    <p>
+      2.确认Wi-Fi连接正常，点击【下一步】
+    </p>
+    <ion-button expand="block" (click)="showConfirm()">下一步</ion-button>
+  </div>
+  <div id="setWifi" class="padd20"  *ngIf="bindState == '3'" >
+    <img src="../../../assets/img/bind-device3.jpg" height="150" width="600"/>
+    <p>
+      1.输入Wi-Fi密码后点击"绑定"进入配网绑定状态；
+    </p>
+    <p>
+      2.设备暂不支持5G的Wi-Fi；
+    </p>
+    <p>
+      3.如果使用TP-Link路由器，请发选"无线高级设置"内所有的选项。
+    </p>
+    <p>
+      4.Wi-Fi的名称和密码如有中文、下划线、特殊字符，请去掉再进行配网，否则配网失败。
+    </p>
+    <ion-item-divider>
+      <ion-input placeholder="请输入Wi-Fi名称" type="text" [(ngModel)]="wifiName" style="background-color: #ffffff;margin:2px" ></ion-input>
+    </ion-item-divider>
+    <br/>
+    <ion-item-divider>
+      <ion-input placeholder="请输入Wi-Fi密码" type="text" [(ngModel)]="wifiPassword" style="background-color: #ffffff;margin:2px" ></ion-input>
+    </ion-item-divider>
+    <ion-button expand="block" (click)="setWifi()">配网</ion-button>
+  </div>
+</ion-content>

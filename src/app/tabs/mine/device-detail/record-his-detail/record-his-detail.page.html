@@ -1,0 +1,59 @@
+
+<ion-content>
+    <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+        <ion-row style="margin-top: 10px">
+          <ion-col size="2" style="text-align: left" >
+              <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+          </ion-col>
+          <ion-col size="8" style="text-align: center;">
+            <span style="font-size: 18px">
+                详细历史记录
+            </span>
+          </ion-col>
+          <ion-col size="2" style="text-align: center;">
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    <ion-grid>
+        <ion-row>
+          <ion-col size="6" align-self-left>
+              <h5>
+                <b style="font-size: 20px">I</b>
+                过去366天历史记录
+              </h5>
+          </ion-col>
+          <ion-col size="6"  style="text-align: end">
+            <ion-button>导出数据</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <span>甲烷(ppm)</span>
+          </ion-col>
+          <ion-col size="12">
+            <div id="container1"></div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <ion-grid>
+          <ion-row>
+            <ion-col size="6" align-self-left>
+                <h5>
+                  <b style="font-size: 20px">I</b>
+                  过去24小时历史记录
+                </h5>
+            </ion-col>
+            <ion-col size="6"  style="text-align: end">
+              <ion-button>导出数据</ion-button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <span>甲烷(ppm)</span>
+            </ion-col>
+            <ion-col size="12">
+              <div id="container2"></div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+</ion-content>

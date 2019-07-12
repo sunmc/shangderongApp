@@ -1,0 +1,140 @@
+<ion-content>
+  <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+      <ion-row style="margin-top: 10px;">
+        <ion-col size="12">
+          <ion-slides pager="true" [options]="slideOpts">
+            <ion-slide *ngFor="let d of carousels">
+              <img src="{{d.img}}" (click)="toUrl(d.outUrl, d.name)">
+            </ion-slide>
+          </ion-slides>
+        </ion-col>
+        <ion-col size="6" align-self-center>
+          <p style="color: white;font-size: 18px; margin: 0px">管理城市</p>
+        </ion-col>
+        <ion-col size="6" align-self-center style="text-align: right">
+          <img style="width:18px; height:18px" src="../../../assets/icon/city-air/icon-添加城市.png" routerLink="/add-city" routerLinkActive="true">          
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  
+
+  <!--<a routerLink="/login" routerLinkActive="active">Login</a>-->
+  <ion-card class="welcome-card" *ngFor="let aqi of aqis" style="margin: 10px;">
+    <ion-card-content (click)="toAirDetail(aqi.cityId)" style="padding: 0px">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="4" style="text-align: left">
+            <p style="font-size:16px">{{day}}</p>
+          </ion-col>
+          <ion-col size="4" style="text-align: center">
+            <div class="circle-box">
+              <div class="circle-left"></div>
+              <!-- <div class="circle-right"></div> -->
+              <p style="font-size: 40px; font-weight: bold; color: #333333; padding-top: 10px">{{aqi.value}}</p>
+              <p style="font-size: 12px; font-weight: 400; color: #9FA5B4">国标AQI：</p>
+              <p style="font-size: 18px; font-weight: 400; color: #333333">{{aqi.cityName}}</p>
+            </div>
+          </ion-col>
+          <ion-col size="4" style="text-align: right">
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" style="padding: 10px"> 
+            <ion-row>
+              <ion-col size="7" style="text-align: left;padding: 0px">
+                  <p style="font-size: 16px; margin: 0; color: #333333; font-weight: 400">PM2.5</p>
+                  <p style="font-size: 12px; margin: 0; color: #9FA5B4; font-weight: 400">细颗粒物</p>
+              </ion-col>
+              <ion-col size="5" style="text-align: right;padding: 0px">
+              <p style="font-size: 30px; font-weight: 400">{{aqi.pm25}}</p>
+              </ion-col>
+              <ion-col size="12" style="padding: 0px">
+                  <div *ngIf="aqi.pm25 >= aqi.pm25C" style="width: 100%; height:6px; background:#FF0A43"></div>
+                  <div *ngIf="aqi.pm25 &lt; aqi.pm25C" style="width: 100%; height:6px; background:#4CDB3F"></div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="6" style="padding: 10px"> 
+            <ion-row>
+              <ion-col size="7" style="text-align: left;padding: 0px">
+                  <p style="font-size: 16px; margin: 0; color: #333333; font-weight: 400">SO2</p>
+                <p style="font-size: 12px; margin: 0; color: #9FA5B4; font-weight: 400">二氧化硫</p>
+              </ion-col>
+              <ion-col size="5" style="text-align: right;padding: 0px">
+              <p style="font-size: 30px; font-weight: 400">{{aqi.so2}}</p>
+              </ion-col>
+              <ion-col size="12" style="padding: 0px">
+                  <div *ngIf="aqi.so2 >= aqi.so2C" style="width: 100%; height:6px; background:#FF0A43"></div>
+                  <div *ngIf="aqi.so2 < aqi.so2C" style="width: 100%; height:6px; background:#4CDB3F"></div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" style="padding: 10px"> 
+            <ion-row>
+              <ion-col size="7" style="text-align: left;padding: 0px">
+                  <p style="font-size: 16px; margin: 0; color: #333333; font-weight: 400">PM 10</p>
+                  <p style="font-size: 12px; margin: 0; color: #9FA5B4; font-weight: 400">可吸入颗粒</p>
+              </ion-col>
+              <ion-col size="5" style="text-align: right;padding: 0px">
+                  <p style="font-size: 30px; font-weight: 400">{{aqi.pm10}}</p>
+              </ion-col>
+              <ion-col size="12" style="padding: 0px">
+                  <div *ngIf="aqi.pm10 >= aqi.pm10C" style="width: 100%; height:6px; background:#FF0A43"></div>
+                  <div *ngIf="aqi.pm10 < aqi.pm10C" style="width: 100%; height:6px; background:#4CDB3F"></div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+          <ion-col size="6" style="padding: 10px"> 
+            <ion-row>
+              <ion-col size="7" style="text-align: left;padding: 0px">
+                  <p style="font-size: 16px; margin: 0; color: #333333; font-weight: 400">NO2</p>
+                  <p style="font-size: 12px; margin: 0; color: #9FA5B4; font-weight: 400">二氧化氮</p>
+              </ion-col>
+              <ion-col size="5" style="text-align: right;padding: 0px">
+              <p style="font-size: 30px; font-weight: 400">{{aqi.no2}}</p>
+              </ion-col>
+              <ion-col size="12" style="padding: 0px">
+                  <div *ngIf="aqi.no2 >= aqi.no2C" style="width: 100%; height:6px; background:#FF0A43"></div>
+                  <div *ngIf="aqi.no2 < aqi.no2C" style="width: 100%; height:6px; background:#4CDB3F"></div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="6" style="padding: 10px"> 
+            <ion-row>
+                <ion-col size="7" style="text-align: left;padding: 0px">
+                    <p style="font-size: 16px; margin: 0; color: #333333; font-weight: 400">CO</p>
+                  <p style="font-size: 12px; margin: 0; color: #9FA5B4; font-weight: 400">一氧化碳</p>
+                </ion-col>
+                <ion-col size="5" style="text-align: right;padding: 0px">
+                <p style="font-size: 30px; font-weight: 400">{{aqi.co}}</p>
+                </ion-col>
+                <ion-col size="12" style="padding: 0px">
+                    <div *ngIf="aqi.co >= aqi.coC" style="width: 100%; height:6px; background:#FF0A43"></div>
+                    <div *ngIf="aqi.co < aqi.coC" style="width: 100%; height:6px; background:#4CDB3F"></div>
+                </ion-col>
+              </ion-row>
+          </ion-col>
+          <ion-col size="6" style="padding: 10px"> 
+            <ion-row>
+              <ion-col size="7" style="text-align: left;padding: 0px">
+                  <p style="font-size: 16px; margin: 0; color: #333333; font-weight: 400">o3</p>
+                  <p style="font-size: 12px">臭氧</p>
+              </ion-col>
+              <ion-col size="5" style="text-align: right;padding: 0px">
+              <p style="font-size: 30px; font-weight: 400">{{aqi.o3}}</p>
+              </ion-col>
+              <ion-col size="12" style="padding: 0px">
+                  <div *ngIf="aqi.o3 >= aqi.o3C" style="width: 100%; height:6px; background:#FF0A43"></div>
+                  <div *ngIf="aqi.o3 < aqi.o3C" style="width: 100%; height:6px; background:#4CDB3F"></div>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

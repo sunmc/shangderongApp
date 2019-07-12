@@ -4,3 +4,14 @@
 // styles are for the entire app and not just one component. Additionally, this 
 // file can hold Sass mixins, functions, and placeholder classes to be imported 
 // and used throughout the application.
+ion-header img{
+  margin-left: 20px;
+}
+ion-title{
+  font-size: 20px;
+}
+.padd20{
+  padding-left: 20px;
+  padding-right: 20px;
+}
+

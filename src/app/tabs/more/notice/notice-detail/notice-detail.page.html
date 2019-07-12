@@ -1,0 +1,24 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/notice" routerLinkActive="true"></ion-icon>
+    <ion-title>{{notice.title}}</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+    <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+      <ion-row style="margin-top: 10px">
+        <ion-col size="2" style="text-align: left" >
+            <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+        </ion-col>
+        <ion-col size="8" style="text-align: center;">
+          <span style="font-size: 18px">
+              {{notice.title}}
+          </span>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  <img *ngFor="let imgUrl of imgs" src="{{imgUrl}}">
+</ion-content>

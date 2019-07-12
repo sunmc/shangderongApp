@@ -1,0 +1,32 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/tabs/more" routerLinkActive="true"></ion-icon>
+    <ion-title>公告</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+    <ion-row style="margin-top: 10px">
+      <ion-col size="2" style="text-align: left" >
+          <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+      </ion-col>
+      <ion-col size="8" style="text-align: center;">
+        <span style="font-size: 18px">
+            公告
+        </span>
+      </ion-col>
+      <ion-col size="2" style="text-align: center;">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list>
+    <ion-item detail="true" *ngFor="let notice of noticeList" (click)="toDetail(notice)">
+      <ion-label>{{notice.title}}</ion-label>
+      <ion-label>{{notice.times}}</ion-label>
+      <span style="font-size: 12px; color:rgb(243, 60, 60)" *ngIf="!notice.isRead">未读</span>
+      <span style="font-size: 12px; color:darkgray" *ngIf="notice.isRead">已读</span>
+    </ion-item>
+  </ion-list>
+
+</ion-content>

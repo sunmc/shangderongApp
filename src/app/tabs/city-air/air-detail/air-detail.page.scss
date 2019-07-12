@@ -1,0 +1,27 @@
+.circle-box {
+    position: relative;
+    width: 120px;
+    height: 120px;
+}
+.circle-left {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    clip: rect(0 100px auto 0);
+    box-shadow: inset 0 0 0 4px #4CDB3F;
+    left: 0;
+    top: 0;
+    transform: rotate(90deg);
+}
+.circle-right {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    position: absolute;
+    clip: rect(0 auto auto 90px);
+    box-shadow: inset 0 0 0 2px #ff2d36;
+    left: 0;
+    top: 0;
+    transform: rotate(-60deg);
+}

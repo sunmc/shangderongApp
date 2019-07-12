@@ -1,0 +1,68 @@
+<!-- <ion-header class="back-color">
+  <ion-toolbar>
+    <ion-icon name="ios-arrow-back" slot="start" style="font-size:18px" routerLink="/tabs/mine" routerLinkActive="true"></ion-icon>
+    <ion-title>添加设备</ion-title>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content>
+  <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+      <ion-row style="margin-top: 10px">
+        <ion-col size="2" style="text-align: left" >
+            <ion-icon name="ios-arrow-back" style="font-size:18px" (click)="goBack()"></ion-icon>
+        </ion-col>
+        <ion-col size="8" style="text-align: center;">
+          <span style="font-size: 18px">
+              添加设备
+          </span>
+        </ion-col>
+        <ion-col size="2" style="text-align: center;">
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12">
+          <p style="font-size: 14px; margin-top: 5px; margin-left: 10px">
+            1. App 连接您的购置的安全设备，您可以在世界任何地方查看您家庭和办公场所的安全情况，或接收到报警短信和电话
+          </p>
+          <p style="font-size: 14px; margin-left: 10px">
+            2. 您可以导出历史记录和生成污染地图
+          </p>
+        </ion-col>
+      </ion-row>
+  </ion-grid>
+  <ion-card style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 0px">
+    <ion-item detail="true" lines="none" routerLink="/bind-device" routerLinkActive="true">
+      绑定设备
+    </ion-item>
+  </ion-card>
+  <ion-card style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 0px">
+    <ion-item detail="true" lines="none" style="padding-top: 20px; padding-bottom: 20px">
+      <div class="device-out" slot="start">
+        <div class="device-in">
+          <div class="device-point"></div>
+        </div>
+      </div>
+      <ion-label>
+        <p style="font-weight: bold; font-size: 18px; color: #333333">燃气报警器</p>
+        <p style="font-weight: normal; font-size: 14px; color: #9FA5B4; margin-top: 10px">燃气报警器的描述信息</p>
+      </ion-label>
+      <img src="../../../../assets/icon/mine/icon-detail-商场.png" style="width:15px;height:15px">
+      <span style="font-size: 14px; color: #3165EC">商城</span>
+    </ion-item>
+  </ion-card>
+  <ion-card style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 0px">
+    <ion-item detail="true" lines="none" style="padding-top: 20px; padding-bottom: 20px">
+      <div class="device-out" slot="start">
+        <div class="device-in">
+          <div class="device-point"></div>
+        </div>
+      </div>
+      <ion-label>
+        <p style="font-weight: bold; font-size: 18px; color: #333333">燃气报警器</p>
+        <p style="font-weight: normal; font-size: 14px; color: #9FA5B4; margin-top: 10px">燃气报警器的描述信息</p>
+      </ion-label>
+      <img src="../../../../assets/icon/mine/icon-detail-商场.png" style="width:15px;height:15px">
+      <span style="font-size: 14px; color: #3165EC">商城</span>
+    </ion-item>
+  </ion-card>
+</ion-content>

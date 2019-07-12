@@ -1,0 +1,39 @@
+<!-- <ion-header>
+    <ion-toolbar>
+      <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/device-detail" routerLinkActive="true"></ion-icon>
+      <ion-title>服务延保</ion-title>
+      <ion-label routerLink="/get-service-his" routerLinkActive="true" slot="end">延保记录</ion-label>
+    </ion-toolbar>
+  </ion-header> -->
+
+<ion-content>
+    <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);color: white">
+        <ion-row style="margin-top: 10px">
+          <ion-col size="2" style="text-align: left" >
+              <ion-icon name="ios-arrow-back" style="font-size:21px" (click)="goBack()"></ion-icon>
+          </ion-col>
+          <ion-col size="8" style="text-align: center;">
+            <span style="font-size: 18px">
+                服务延保
+            </span>
+          </ion-col>
+          <ion-col size="2" style="text-align: center;">
+            <ion-label (click)="toGetServiceHis()">延保记录</ion-label>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    <ion-list>
+        <ion-radio-group>
+            <ion-item *ngFor="let d of deviceService">
+              <ion-radio value="{{d.price}}" mode="md" slot="start" checked></ion-radio>
+              <div>
+                  <p style="font-size: 16px; font-weight:400px; color: #333333">{{d.title}}</p>
+                  <p style="font-size: 14px; font-weight:300px; color: #626B80">{{d.content}}</p>
+              </div>
+              <span style="font-size: 16px; font-weight:400px; color: #333333" slot="end">{{d.price}}元</span>
+            </ion-item>
+        </ion-radio-group>
+      </ion-list>
+      <ion-button expand="block">确认支付</ion-button>
+
+</ion-content>

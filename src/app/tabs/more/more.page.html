@@ -1,0 +1,61 @@
+<ion-content>
+  <ion-grid style="background:linear-gradient(136deg,rgba(69,142,243,1) 0%,rgba(49,101,236,1) 100%);">
+    <ion-row style="margin-top: 10px">
+      <ion-col size="2" style="text-align: left">
+        <img src="../../../assets/icon/more/icon-set-mail.png" style="width:23px;height:17px" (click)="toNotice()">
+        <ion-badge color="danger" style="position: absolute; padding: 2px; font-size: 11px" *ngIf="noticeCount > 0">{{noticeCount}}</ion-badge>
+      </ion-col>
+      <ion-col size="8" style="text-align: center;color: white" routerLink="/profile" routerLinkActive="true">
+        <img src="../../../assets/icon/more/用户头像.png" style="width:70px;height:70px">
+        <p style="font-size: 18px; font-weight: 400; margin: 0">{{user.nickname}}</p>
+        <p style="font-size: 14px; font-weight: 300; margin: 0">{{deviceCount}}个智能设备</p>
+      </ion-col>
+      <ion-col size="2" style="text-align: end" (click)="toSetting()">
+        <img src="../../../assets/icon/more/icon-more-set.png" style="width:21px;height:21px">
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-card style="margin: 10px">
+    <ion-grid>
+      <ion-row>
+        <ion-col size="4">
+            <img src="../../../assets/icon/more/icon-商场.png" style="width:35px;height:35px">
+            <br/><ion-label>商场</ion-label>
+        </ion-col>
+        <ion-col size="4" routerLink="/after-service" routerLinkActive="true">
+            <img src="../../../assets/icon/more/icon-维护.png" style="width:35px;height:35px">
+            <br/><ion-label>售后维护</ion-label>
+        </ion-col>
+        <ion-col size="4">
+            <img src="../../../assets/icon/more/icon-清理缓存.png" style="width:35px;height:35px" (click)="cleanCache()">
+            <br/><ion-label>清理缓存</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4">
+            <img src="../../../assets/icon/more/icon-火警电话.png" style="width:35px;height:35px" (click)="callNumber('119')">
+            <br/><ion-label>火警电话</ion-label>
+        </ion-col>
+        <ion-col size="4">
+            <img src="../../../assets/icon/more/icon-急救电话.png" style="width:35px;height:35px" (click)="callNumber('120')">
+            <br/><ion-label>急救电话</ion-label>
+        </ion-col>
+        <ion-col size="4">
+            <img src="../../../assets/icon/more/icon-保险.png" style="width:35px;height:35px">
+            <br/><ion-label>保险</ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="4" routerLink="/about" routerLinkActive="true">
+            <img src="../../../assets/icon/more/icon-关于我们.png" style="width:35px;height:35px">
+            <br/><ion-label>关于我们</ion-label>
+        </ion-col>
+        <ion-col size="4">
+            <img src="../../../assets/icon/more/icon-更多.png" style="width:35px;height:35px">
+            <br/><ion-label>更多</ion-label>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card>
+
+</ion-content>

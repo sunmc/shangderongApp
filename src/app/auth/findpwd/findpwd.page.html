@@ -1,0 +1,26 @@
+<ion-header padding="45px">
+  <ion-toolbar>
+    <ion-icon name="ios-arrow-back" slot="start" size="large" routerLink="/login" routerLinkActive="true"></ion-icon>
+    <ion-title>
+      忘记密码
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding="45px">
+  <ion-item>
+    <ion-input type="text" placeholder="请输入手机号" [(ngModel)]="user.phone" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="text" placeholder="请输入验证码" [(ngModel)]="user.code" required="true"></ion-input>
+    <a (click)="sendSmsCode()" *ngIf="smsCodeDes == '获取验证码'">{{smsCodeDes}}</a>
+    <ion-label *ngIf="smsCodeDes != '获取验证码'">{{smsCodeDes}}</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-input type="password" placeholder="请重新设置密码" [(ngModel)]="user.passwd" required="true"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input type="password" placeholder="请再次输入密码" [(ngModel)]="password" required="true"></ion-input>
+  </ion-item>
+  <ion-button expand="block" (click)="resetPassword()">确认修改</ion-button>
+</ion-content>
